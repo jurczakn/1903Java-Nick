@@ -39,6 +39,10 @@ public class InheritanceDriver {
 		
 		
 		//haveBasaliskFly((Basalisk)basalisk);
+		
+		Scopes.main(null);
+		Scopes scope = new Scopes();
+		scope.instanceInt = 7;
 
 	}
 
