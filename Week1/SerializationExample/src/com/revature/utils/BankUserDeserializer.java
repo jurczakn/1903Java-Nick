@@ -15,10 +15,7 @@ public class BankUserDeserializer {
 		
 		BankUser bankUser = null;
 		
-		try {
-			FileInputStream fileIn = new FileInputStream(FILENAME);
-			
-			ObjectInputStream in = new ObjectInputStream(fileIn);
+		try (FileInputStream fileIn = new FileInputStream(FILENAME); ObjectInputStream in = new ObjectInputStream(fileIn);) {
 			
 			bankUser = (BankUser) in.readObject();
 			
