@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class ConnectionFactory {
 	
-	private static final String PROPERTIES_FILE = "database.properties";
+	private static final String PROPERTIES_FILE = "src/main/resources/database.properties";
 	private static String user;
 	private static String password;
 	private static String url;

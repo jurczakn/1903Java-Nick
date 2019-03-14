@@ -1,11 +1,9 @@
 package com.revature;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.Scanner;
 
+import com.revature.bean.UserDaoImpl;
+import com.revature.dao.UserDao;
 import com.revature.util.ConnectionFactory;
 
 public class JDBCDriver {
@@ -14,15 +12,19 @@ public class JDBCDriver {
 /*private static String username = "";
 private static String password = "";
 private static String url = "";*/
+private static UserDao userDao = new UserDaoImpl(ConnectionFactory.getConnection());
 
 public static void main(String[] args) {
-	try {
+	System.out.println("What user do you want to get?");
+	Scanner sc = new Scanner(System.in);
+	System.out.println(userDao.getUserById(sc.nextInt()));
+	/*try {
 		Connection conn = ConnectionFactory.getConnection();//DriverManager.getConnection(url, username, password);
-		/*String query = "create table user_table ("
+		String query = "create table user_table ("
 				+ "user_id serial primary key,"
 				+ "username text unique,"
 				+ "password text"
-				+ ")";*/
+				+ ")";
 		//String query = "insert into user_table (username, password) values('Damani', 'damani123')";
 		String query = "select * from user_table";
 		Statement stmt = conn.createStatement();
@@ -37,7 +39,7 @@ public static void main(String[] args) {
 	} catch (SQLException e) {
 		System.out.println("Failure:[");
 		e.printStackTrace();
-	}
+	}*/
 }	
 	
 
