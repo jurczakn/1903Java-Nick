@@ -2,27 +2,37 @@ package com.revature;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import com.revature.util.ConnectionFactory;
 
 public class JDBCDriver {
 	
 
-private static String username = "njurczak";
-private static String password = "Revature";
-private static String url = "jdbc:postgresql://nick-1903-java-db.cjteoptiiwyx.ca-central-1.rds.amazonaws.com:5432/nick_1903_java_db?";
+/*private static String username = "";
+private static String password = "";
+private static String url = "";*/
 
 public static void main(String[] args) {
 	try {
-		Connection conn = DriverManager.getConnection(url, username, password);
+		Connection conn = ConnectionFactory.getConnection();//DriverManager.getConnection(url, username, password);
 		/*String query = "create table user_table ("
 				+ "user_id serial primary key,"
 				+ "username text unique,"
 				+ "password text"
 				+ ")";*/
-		String query = "insert into user_table (username, password) values('ahmed', 'ahmed123')";
+		//String query = "insert into user_table (username, password) values('Damani', 'damani123')";
+		String query = "select * from user_table";
 		Statement stmt = conn.createStatement();
-		stmt.executeUpdate(query);
+		//stmt.executeUpdate(query);
+		ResultSet rs = stmt.executeQuery(query);
+		
+		while(rs.next()){
+			System.out.println("User: " + rs.getInt(1) + "- username: " + rs.getString(2) + " password: " + rs.getString(3));
+		}
+		
 		System.out.println("Success!!!!!!");
 	} catch (SQLException e) {
 		System.out.println("Failure:[");
