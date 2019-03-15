@@ -18,4 +18,6 @@ public interface UserDao {
 	
 	public List getAllUsers();
 
+	void preparedUpdateUser(User u);
+
 }

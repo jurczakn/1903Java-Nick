@@ -2,8 +2,9 @@ package com.revature;
 
 import java.util.Scanner;
 
-import com.revature.bean.UserDaoImpl;
+import com.revature.bean.User;
 import com.revature.dao.UserDao;
+import com.revature.dao.UserDaoImpl;
 import com.revature.util.ConnectionFactory;
 
 public class JDBCDriver {
@@ -15,9 +16,9 @@ private static String url = "";*/
 private static UserDao userDao = new UserDaoImpl(ConnectionFactory.getConnection());
 
 public static void main(String[] args) {
-	System.out.println("What user do you want to get?");
+	/*System.out.println("What user do you want to get?");
 	Scanner sc = new Scanner(System.in);
-	System.out.println(userDao.getUserById(sc.nextInt()));
+	System.out.println(userDao.getUserById(sc.nextInt()));*/
 	/*try {
 		Connection conn = ConnectionFactory.getConnection();//DriverManager.getConnection(url, username, password);
 		String query = "create table user_table ("
@@ -40,6 +41,18 @@ public static void main(String[] args) {
 		System.out.println("Failure:[");
 		e.printStackTrace();
 	}*/
+	System.out.println("Do you wish to change your password?");
+	Scanner sc = new Scanner(System.in);
+	if ("yes".equals(sc.nextLine().toLowerCase())){
+		/*System.out.println("Please enter your id");
+		Integer id = sc.nextInt();
+		sc.nextLine();*/
+		System.out.println("Please enter new username");
+		String username = sc.nextLine();
+		System.out.println("Please enter new password");
+		String password = sc.nextLine();
+		userDao.preparedUpdateUser(new User(-1, username, password));
+	}
 }	
 	
 

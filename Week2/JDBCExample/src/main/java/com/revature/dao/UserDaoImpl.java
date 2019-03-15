@@ -1,12 +1,13 @@
-package com.revature.bean;
+package com.revature.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-import com.revature.dao.UserDao;
+import com.revature.bean.User;
 
 public class UserDaoImpl implements UserDao {
 
@@ -20,10 +21,31 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void updateUser(User u) {
-		// TODO Auto-generated method stub
+		try {
+			Statement stmt = conn.createStatement();
+			String query = "update user_table set password = '" + u.getPassword() + "' where username = '" + u.getUsername() + "'";
+			stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 	}
 
+	@Override
+	public void preparedUpdateUser(User u){
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("update user_table set password = ? where username = ?");
+			pstmt.setString(1, u.getPassword());
+			pstmt.setString(2, u.getUsername());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void deleteUser(User u) {
 		// TODO Auto-generated method stub
