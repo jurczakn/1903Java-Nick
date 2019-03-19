@@ -15,7 +15,7 @@ public class CallableDriver {
 		try {
 			conn.setAutoCommit(false);
 			CallableStatement call =  conn.prepareCall(sql);
-			call.setInt(1, 5);
+			call.setInt(1, 6);
 			ResultSet rsInit = call.executeQuery();
 			rsInit.next();
 			ResultSet rs = (ResultSet) rsInit.getObject(1);
@@ -23,6 +23,7 @@ public class CallableDriver {
 				System.out.println("FName: " + ((ResultSet)rs).getString(2));
 				System.out.println("LName: " + ((ResultSet)rs).getString(1));
 			}
+			conn.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
