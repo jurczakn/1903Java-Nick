@@ -19,6 +19,8 @@ window.onload = function(){
     form.insertBefore(year, form.lastElementChild);
     form.insertBefore(document.createElement("br"), form.lastElementChild);
     //form.innerText="this is new text";
+    //                                                                v----callback
+    document.getElementById("submitButton").addEventListener("click", grabBook);
 }
 
 function getTitle(){
@@ -34,8 +36,18 @@ function getTitle(){
 
 }
 
-function grabBook(){
-    return new Book(author, title, year);
+function grabBook(event){
+    event.preventDefault();
+    var title = document.getElementById("title").value || 'default title';
+    var year = document.getElementById("year").value || 'default title';
+
+    var form = document.getElementById("authorForm").elements;
+    var author = form['author'].value || 'default author';
+
+    var book = new Book(author, title, year);
+    console.log(book);
+    return book;
+
 }
 
 function Book(author, title, year){
