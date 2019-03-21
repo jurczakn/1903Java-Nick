@@ -3,12 +3,22 @@ var form;
 window.onload = function(){
     form = document.getElementById("authorForm");
     title = document.getElementById("title").value;
+    
     var year = document.createElement("input");
     year.setAttribute("type", "number");
     year.setAttribute("id", "year");
     year.setAttribute("name", "year");
-    year.innerHTML = "Year: ";
-    form.appendChild(year);
+    
+    var yearLabel = document.createElement("label");
+    yearLabel.setAttribute("for", "year");
+    yearLabel.innerHTML = "Year: ";
+    
+    /* form.appendChild(year);
+    form.appendChild(yearLabel); */
+    form.insertBefore(yearLabel, form.lastElementChild);
+    form.insertBefore(year, form.lastElementChild);
+    form.insertBefore(document.createElement("br"), form.lastElementChild);
+    //form.innerText="this is new text";
 }
 
 function getTitle(){
@@ -22,4 +32,14 @@ function getTitle(){
         }
     }
 
+}
+
+function grabBook(){
+    return new Book(author, title, year);
+}
+
+function Book(author, title, year){
+    this.author = author;
+    this.title = title;
+    this.year = year;
 }
