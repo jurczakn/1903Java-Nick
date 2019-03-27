@@ -28,8 +28,15 @@ public class FrontController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpServlet nextServlet = requestHelper.dispatchRequest(request.getRequestURI());
-		nextServlet.service(request, response);
+		String path = request.getRequestURI();
+		
+		if ("/FrontControllerExample/app/login".equals(path) || (request.getSession(false) != null && request.getSession(false).getAttribute("user") != null)) {
+			HttpServlet nextServlet = requestHelper.dispatchRequest(path);
+			nextServlet.service(request, response);
+		} else {
+			response.sendRedirect("/FrontControllerExample/login.html");
+		}
+		
 	}
 
 	/**

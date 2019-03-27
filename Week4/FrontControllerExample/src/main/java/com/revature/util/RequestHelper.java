@@ -7,6 +7,7 @@ import com.revature.servlets.HelloWorldServlet;
 import com.revature.servlets.HomeServlet;
 import com.revature.servlets.LifecycleServlet;
 import com.revature.servlets.LoginServlet;
+import com.revature.servlets.LogoutServlet;
 import com.revature.servlets.PageNotFoundServlet;
 import com.revature.servlets.RedirectServlet;
 
@@ -19,6 +20,8 @@ public class RequestHelper {
 	private static HttpServlet loginServlet = new LoginServlet();
 	private static HttpServlet redirectServlet = new RedirectServlet();
 	private static HttpServlet pnfServlet = new PageNotFoundServlet();
+	private static HttpServlet logoutServlet = new LogoutServlet();
+	
 	
 	private static final String PREFIX = "/FrontControllerExample/app/";
 	
@@ -52,6 +55,10 @@ public class RequestHelper {
 		case PREFIX + "lifecycle":
 			nextServlet = lifecycleServlet;
 			break;
+			
+		case PREFIX + "logout":
+			nextServlet = logoutServlet;
+		break;
 			
 		default: 
 			nextServlet = pnfServlet;

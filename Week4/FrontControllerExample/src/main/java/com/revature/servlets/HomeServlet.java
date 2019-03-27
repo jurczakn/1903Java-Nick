@@ -34,7 +34,8 @@ public class HomeServlet extends HttpServlet {
 		String title = "Front controller website";//getServletContext().getInitParameter("websiteTitle");
 		String roles = "some roles";//getServletConfig().getInitParameter("roles");
 		
-		response.getWriter().append("Welcome to your homepage " + name + " on " + title + " where you can access " + roles);
+		response.getWriter().append("<div>Welcome to your homepage " + name + " on " + title + " where you can access " + roles 
+				+ "<a href=logout>logout</a></div>");
 	}
 
 	/**
