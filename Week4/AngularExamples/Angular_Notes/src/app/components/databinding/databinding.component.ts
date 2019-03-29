@@ -53,4 +53,8 @@ export class DatabindingComponent implements OnInit {
     this.counter++;
   }
 
+  clear() {
+    this.twoWayValue = '';
+  }
+
 }

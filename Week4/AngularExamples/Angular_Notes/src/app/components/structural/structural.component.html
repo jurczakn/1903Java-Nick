@@ -1,0 +1,36 @@
+<div>
+    <div class="panel-heading">
+        <span class="label label-default label-center">
+            Structural Directives
+        </span>
+    </div>
+    <div class="panel-body">
+        <div class="list-group">
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    Changing the physical <strong>structure</strong>
+                    of the HTML page.
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    <button (click)="hide()">Hide/Show</button>
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    <div *ngIf="show">;<!-- else elseBlock">-->
+                        This is a super secret div
+                    </div>
+                    <!--<ng-template #elseBlock>
+                        How did you find me
+                    </ng-template>-->
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

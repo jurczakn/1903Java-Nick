@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StructuralComponent implements OnInit {
 
+  show = true;
+
+  hide() {
+    this.show = !this.show;
+  }
+
   constructor() { }
 
   ngOnInit() {
