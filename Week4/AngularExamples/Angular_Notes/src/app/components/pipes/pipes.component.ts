@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class PipesComponent {
 
+    movieList: Array<string> = [];
+
+    movieTitle: string;
+
+    searchTerm = '';
+
+    addMovie() {
+        this.movieList.push(this.movieTitle);
+    }
+
 }

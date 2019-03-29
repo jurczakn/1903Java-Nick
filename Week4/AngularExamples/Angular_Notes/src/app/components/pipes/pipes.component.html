@@ -1,0 +1,9 @@
+New Movie: <input [(ngModel)]="movieTitle">
+<br>
+<button (click)="addMovie()">Add Movie</button>
+<br>
+Search: <input [(ngModel)]="searchTerm" type="text"/>
+<br>
+<ul *ngFor="let movie of movieList | moviePipe: searchTerm">
+    <li>{{movie}}</li>
+</ul>
