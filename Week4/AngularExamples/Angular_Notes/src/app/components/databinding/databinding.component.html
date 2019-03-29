@@ -1,0 +1,130 @@
+<div>
+    <div class="panel-heading">
+        <span class="label label-default label-center">
+            {{title}} {{interpolationNotation}}
+        </span>
+    </div>
+    <div class="panel-body">
+        <div class="list-group">
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    Interpolation {{interpolation}}
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    Used for <strong>one-way</strong>
+                    databinding to a <strong>value</strong>.
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    You can also <strong>evaluate</strong>
+                    using <strong>{{interpolationNotation}}</strong>
+                    notation as well.
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    21 + 72 <strong>=</strong> {{21 + 72}}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="panel-heading">
+        <span class="label label-default label-center">
+            Property Binding {{propertyBindingNotation}}
+        </span>
+    </div>
+    <div class="panel-body">
+        <div class="list-group">
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    Can change the attributes of a node on the
+                    changes of a property.
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    <div [ngStyle]='objectStyle' (click)="changeStyles()">
+                        This should look interesting
+                    </div>
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    We can change and bind to properties of another component.
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    Another form of one-way databinding
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="panel-heading">
+        <span class="label label-default label-center">
+            Event Binding {{eventBindingNotation}}
+        </span>
+    </div>
+    <div class="panel-body">
+        <div class="list-group">
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    Used for handling events.
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    clock the button to increment the value: {{counter}}
+                    <div (click)="addToCounter()">
+                        <button class="btn btn-primary btn-center">
+                            increment
+                        </button>
+                    </div>
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    We can change and bind to properties of another component.
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    Another form of one-way databinding
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="panel-heading">
+        <span class="label label-default label-center">
+            Two-Way Binding {{twoWayBindingNotation}}
+        </span>
+    </div>
+    <div class="panel-body">
+        <div class="list-group">
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    Allows us to compind our property and event bindings.
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    Done by using ngModel Attribute Directive
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    Input Value here: 
+                    <input type="text" [(ngModel)]=twoWayValue>
+                </span>
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right">
+                    {{twoWayValue}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
