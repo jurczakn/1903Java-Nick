@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="house" class="com.revature.beans.House" scope="prototype">
+		<!-- Set up Bean Wiring -->
+		<property name="door" ref="door"></property>
+	</bean>
+	
+	<bean id="door" class="com.revature.beans.Door" scope="prototype">
+		<property name="material" value="glass"></property>
+	</bean>
+	
+	<bean id="brokenDoor" class="com.revature.beans.BrokenDoor"></bean>
+	
+</beans>
