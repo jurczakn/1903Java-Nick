@@ -1,9 +1,17 @@
 package com.revature.pojos;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class User {
 	
+	@Size(min=6, message="password must be at least 6 characters")
+	@Pattern(regexp=".[a-z].[0-9].", message="Must have ast least one number and one letter")
 	private String password;
 	
+	@NotNull
+	@Size(min=6, max=12, message="Username must be between 6 and 12 characters")
 	private String username;
 	
 	private String fullName;

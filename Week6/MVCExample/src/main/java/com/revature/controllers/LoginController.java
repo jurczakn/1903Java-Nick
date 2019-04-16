@@ -4,10 +4,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,9 +35,13 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String loginPost(User user, HttpSession sess, ModelMap modelMap){
+	public String loginPost(@Valid User user, BindingResult bindingResult, HttpSession sess, ModelMap modelMap){
 		User authUser = authService.validateUser(user);
 		log.log(Level.INFO, "AuthUser: " + authUser);
+		
+		if(bindingResult.hasErrors()) {
+			log.log(Level.WARNING, "Error message: " + bindingResult.getAllErrors().get(0).getDefaultMessage());
+		}
 		
 		if (authUser != null) {
 			sess.setAttribute("user", authUser);

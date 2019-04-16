@@ -1,11 +1,13 @@
 package com.revature.controllers;
 
 import java.util.List;
-import java.util.logging.Level;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,8 +38,15 @@ public class UserController {
 	}
 	
 	@PostMapping(consumes = "application/json")
-	public void makeUser(@RequestBody User user) {
-		userService.addUser(user);
+	public String makeUser(@RequestBody @Valid User user, BindingResult bindingResult, HttpServletResponse resp) {
+		if(bindingResult.hasErrors()) {
+			resp.setStatus(403);
+			//log error message
+			return bindingResult.getAllErrors().get(1).getDefaultMessage();
+		} else {
+			userService.addUser(user);
+			return "success";
+		}
 	}
 	
 	@PostMapping(value="/user/validate", consumes = "application/json")
