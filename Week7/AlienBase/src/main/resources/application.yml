@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: alien-base
+  datasource:
+    url: jdbc:h2:mem:testdb;Mode=PostgreSQL
+    platform: h2
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+server:
+  port: 10003
+  
+#Discovery Configuration
+eureka:
+  client:
+    service-url:
+      default-zone:
+        ${EUREKA_HOME}

@@ -1,0 +1,31 @@
+#Zuul Configuration
+spring:
+  application:
+    name: zuul
+server:
+  port: 10000
+  
+#Local Routes
+#zuul:
+#  routes:
+#    alien-communication:
+#      url: http://localhost:10001
+#    base: 
+#      url: http://localhost:10002
+
+#Full Discovery Routes Through Eureka
+zuul:
+  routes:
+    alien-base:
+      path: /base/**
+      service-id: alien-base
+    alien-communication:
+      path: /satellites/**
+      service-id: alien-communication
+      
+#Discovery Configuration
+eureka:
+  client:
+    service-url:
+      default-zone:
+        ${EUREKA_HOME}

@@ -1,0 +1,4 @@
+applications:
+- name: race-car-driver-service
+  memory: 1G
+  path: target/PCFExample-0.0.1-SNAPSHOT.jar
